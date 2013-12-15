@@ -1,0 +1,29 @@
+%meta{:content => 'text/xhtml;charset=utf-8', 'http-equiv' => 'content-type'}
+%meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+
+%meta{:content => content_for?(:description) ? yield(:description) : "Unigon", :name => "description"}
+%meta{:property => 'og:title', :content => 'Unigon'}
+%meta{:property => 'og:type', :content => 'website'}
+%meta{:property => 'og:url', :content => 'http://unigon.us'}
+%meta{:property => 'og:image', :content => 'http://unigon.us/assets/sas_logo.jpg'}
+%meta{:property => 'og:description', :content => 'Unigon'}
+%meta{:property => 'og:site_name', :content => 'Unigon'}
+
+%link{:rel => 'shortcut icon', :href => '/assets/favicon.ico' }
+
+<!-- generate new icons using http://www.quirco.com/iPhoneIcon -->
+%link{ :rel => "apple-touch-icon", :href => "/assets/iPhoneIcon_Small.png" }
+%link{ :rel => "apple-touch-icon", :sizes => '72x72',   :href => "/assets/iPhoneIcon_Medium.png" }
+%link{ :rel => "apple-touch-icon", :sizes => '114x114', :href => "/assets/iPhoneIcon_Big.png" }
+%meta{ :name => 'apple-touch-fullscreen', :content => 'yes'}
+%meta{ :name => 'apple-mobile-web-app-capable', :content => 'yes'}
+
+<!-- iPhone SPLASHSCREEN-->
+<link href="/assets/apple-touch-startup-image-320x460.png" media="(device-width: 320px)" rel="apple-touch-startup-image">
+<!-- iPhone (Retina) SPLASHSCREEN-->
+<link href="/assets/apple-touch-startup-image-640x920.png" media="(device-width: 640px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+
+%script{:type =>"text/javascript", :src => "https://maps.googleapis.com/maps/api/js?&sensor=true&key=#{ENV['GOOGLE_API_KEY']}".html_safe}
+
+= stylesheet_link_tag "application", :media => "all"
+= javascript_include_tag "application"

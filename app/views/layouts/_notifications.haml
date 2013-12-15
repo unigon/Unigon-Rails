@@ -1,0 +1,10 @@
+-if notice || alert
+  .notifications#notifications
+    %p
+      %i.icon-remove-sign{:onclick => "$('#notifications').animate({ opacity: 0, height: 0 }, 1200, 'easeOutBounce', function(){ $('#notifications').hide(); });", :style => 'cursor: pointer;'}
+      &nbsp;
+      - if notice
+        = raw notice
+      - if alert
+        = raw alert
+  .clear

@@ -1,0 +1,15 @@
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %title= "SAS | #{@title || @subject || (defined?(params) ? params[:controller].humanize.titleize : 'Website')}"
+
+    = render :partial => 'layouts/head'
+    = csrf_meta_tags
+    = yield(:head)
+  %body
+    = render :partial => 'layouts/header'
+    = render :partial => 'layouts/notifications'
+    #content
+      = yield
+      / End Content
+    = render :partial => 'layouts/footer'
