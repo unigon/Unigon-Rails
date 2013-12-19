@@ -16,43 +16,11 @@ class PagesController < ApplicationController
     end
   end
   
-  def welcome
+  def home
     # @outer_nav = 'o_home'
     @title = 'Welcome'
     respond_to do |format|
       format.html{ render :layout => params[:layout] ? params[:layout] : 'application' }
-    end    
-  end
-
-  def home
-    @homepage_slides = Slide.find_slideshow('homepage')    
-    next_event_slide = Event.next_event_slide('homepage')
-    last_event_slide = Event.last_event_slide('homepage')
-    if last_event_slide
-      @homepage_slides.unshift last_event_slide
-    end
-    if next_event_slide
-      @homepage_slides.unshift next_event_slide
-    end
-    
-    @equipment = Equipment.where('user_id is null').order('title').all
-
-    today = DateTime.now.in_time_zone(ENV['TZ'])
-    year = params[:year] || today.year
-    month = params[:month] || today.month
-    @events = Event.for_a_month(year, month)
-    
-    events = Event.event_types.map{|event_type| event_type.last}
-    @next_events = Event.next_events(events, show_on_home = true, events_to_get = 5)
-        
-    @announcements = Announcement.recents(limit_by = 3)
-    
-    @comments = Comment.recents(limit_by = 12)
-
-    @outer_nav = 'o_home'
-    @title = 'Home'
-    respond_to do |format|
-      format.html { render :layout => 'home' }
     end    
   end
   
