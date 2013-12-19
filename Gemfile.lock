@@ -181,7 +181,7 @@ GEM
       activesupport (= 3.2.11)
       bundler (~> 1.0)
       railties (= 3.2.11)
-    rails_layout (0.5.7)
+    rails_layout (0.5.8)
     railties (3.2.11)
       actionpack (= 3.2.11)
       activesupport (= 3.2.11)
